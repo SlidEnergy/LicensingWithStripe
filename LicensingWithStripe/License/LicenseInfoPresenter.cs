@@ -43,6 +43,7 @@ namespace LicensingWithStripe.License
               productCode: "bc",
               appName: "BetterCharts",
               appVersion: "v0.1");
+            configuration.CustomerAccount = "ChartTank";
 
             _licenseManager.Initialize(configuration);
 

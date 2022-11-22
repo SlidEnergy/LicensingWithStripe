@@ -29,7 +29,7 @@ namespace LicensingWithStripe
         public void SetSuccessResult(ILicense license)
         {
             // TODO: Design and color text
-            completionWizardPage1.FinishText = license.ToString();
+            completionWizardPage1.FinishText = license.ToFormatString();
             wizardControl1.SelectedPage = completionWizardPage1;
         }
 

@@ -29,13 +29,14 @@ namespace LicensingWithStripe.License.Activation
 
         private void _view_ActivateCommercial(string licenseKey)
         {
-            ActivateLicense(licenseKey);
+            var licenseI = LicenseID.FromKey(licenseKey);
+            ActivateLicense(licenseI);
         }
 
         private void _view_ActivateTrial(Customer customer)
         {
-            var licenseKey = GenerateTrialLicense(customer);
-            ActivateLicense(licenseKey);
+            var licenseId = GenerateTrialLicense(customer);
+            ActivateLicense(licenseId);
         }
 
         public DialogResult ShowDialog()
@@ -43,26 +44,27 @@ namespace LicensingWithStripe.License.Activation
             return _view.ShowDialog();
         }
 
-        public string GenerateTrialLicense(Customer customer)
+        public LicenseID GenerateTrialLicense(Customer customer)
         {
             try
             {
                 var licenseId = _licenseManager.GetTrialLicense(customer);
-                return licenseId.Key;
+                return licenseId;
             }
             catch (LicenseSpringException e)
             {
                 // TODO: handle errors by type
                 _view.SetFailResult(e.Message);
-                return "";
+                return null;
             }
         }
 
-        public void ActivateLicense(string licenseKey)
+        public void ActivateLicense(LicenseID licenseId)
         {
             try
             {
-                var license = _licenseManager.ActivateLicense(licenseKey);
+
+                ILicense license = _licenseManager.ActivateLicense(licenseId);
 
                 if (license != null)
                     _view.SetSuccessResult(license);

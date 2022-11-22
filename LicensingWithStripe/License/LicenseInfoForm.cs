@@ -30,7 +30,7 @@ namespace LicensingWithStripe.License
             }
             else
             {
-                memoEdit1.Text = _license.ToString();
+                memoEdit1.Text = _license.ToFormatString();
             }
 
         }
