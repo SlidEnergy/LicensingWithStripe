@@ -1,7 +1,8 @@
-﻿using DevExpress.Utils.About;
-using LicenseSpring;
+﻿using LicenseSpring;
 using LicensingWithStripe.License.Activation;
+using System;
 using System.ComponentModel;
+using System.Windows.Forms;
 
 namespace LicensingWithStripe.License
 {
@@ -29,7 +30,7 @@ namespace LicensingWithStripe.License
             }
         }
 
-        private void _view_Load(object? sender, EventArgs e)
+        private void _view_Load(object sender, EventArgs e)
         {
             Initialize();
         }
@@ -60,8 +61,8 @@ namespace LicensingWithStripe.License
             {
                 try
                 {
-                license.Check();
-            }
+                    license.Check();
+                }
                 catch (Exception ex)
                 {
 

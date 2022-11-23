@@ -1,4 +1,6 @@
-﻿namespace LicensingWithStripe
+﻿using System.Windows.Forms;
+
+namespace LicensingWithStripe
 {
     partial class Form1
     {

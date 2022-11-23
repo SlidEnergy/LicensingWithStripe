@@ -1,4 +1,5 @@
 ﻿using LicenseSpring;
+using System;
 
 namespace LicensingWithStripe.License
 {
