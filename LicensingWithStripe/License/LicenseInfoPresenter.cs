@@ -65,7 +65,7 @@ namespace LicensingWithStripe.License
                 }
                 catch (Exception ex)
                 {
-
+                    MessageBox.Show("Error of license validation: " + ex.Message, "License validation", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
