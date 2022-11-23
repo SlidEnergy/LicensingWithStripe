@@ -63,7 +63,6 @@ namespace LicensingWithStripe.License.Activation
         {
             try
             {
-
                 ILicense license = _licenseManager.ActivateLicense(licenseId);
 
                 if (license != null)

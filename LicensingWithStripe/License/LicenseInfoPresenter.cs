@@ -49,12 +49,24 @@ namespace LicensingWithStripe.License
 
             var license = _licenseManager.CurrentLicense();
 
+            _view.License = license;
+
+            CheckLicense(license);
+        }
+
+        private void CheckLicense(ILicense license)
+        {
             if (license != null)
             {
+                try
+                {
                 license.Check();
             }
+                catch (Exception ex)
+                {
 
-            _view.License = license;
+                }
+            }
         }
 
         public DialogResult ShowDialog()
