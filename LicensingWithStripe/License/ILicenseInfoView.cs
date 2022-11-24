@@ -5,7 +5,8 @@ namespace LicensingWithStripe.License
 {
     internal interface ILicenseInfoView : IFormView
     {
-        event Action Activate;
+        event EventHandler<EventArgs> ActivateLicense;
+
         ILicense License { get; set; }
     }
 }

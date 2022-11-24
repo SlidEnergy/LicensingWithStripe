@@ -37,18 +37,15 @@ namespace LicensingWithStripe
             {
                 ProcessStep1(e);
             }
-
-            if (e.Page == wizardPage2)
+            else if (e.Page == wizardPage2)
             {
                 ProcessStep2(e);
             }
-
-            if (e.Page == wizardPage3)
+            else if (e.Page == wizardPage3)
             {
                 ProcessStep3(e);
             }
-
-            if (e.Page == wizardPage4)
+            else if (e.Page == wizardPage4)
             {
                 ProcessStep4(e);
             }

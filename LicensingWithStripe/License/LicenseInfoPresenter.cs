@@ -17,11 +17,11 @@ namespace LicensingWithStripe.License
         {
             _view = view;
             _view.Load += _view_Load;
-            _view.Activate += _view_Activate;
+            _view.ActivateLicense += _view_Activate;
             _licenseManager = LicenseSpring.LicenseManager.GetInstance();
         }
 
-        private void _view_Activate()
+        private void _view_Activate(object sender, EventArgs e)
         {
             using (var presenter = new LicenseActivationPresenter(new LicenseActivationWizard()))
             {
@@ -43,8 +43,10 @@ namespace LicensingWithStripe.License
               sharedKey: "xxxxxxxxxxxxxxxxxxxxxx",
               productCode: "bc",
               appName: "BetterCharts",
-              appVersion: "v0.1");
-            configuration.CustomerAccount = "ChartTank";
+              appVersion: "v0.1")
+            {
+                CustomerAccount = "ChartTank"
+            };
 
             _licenseManager.Initialize(configuration);
 
@@ -80,7 +82,7 @@ namespace LicensingWithStripe.License
             if (_view != null)
             {
                 _view.Load -= _view_Load;
-                _view.Activate -= _view_Activate;
+                _view.ActivateLicense -= _view_Activate;
                 _view.Dispose();
             }
         }

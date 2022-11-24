@@ -5,7 +5,7 @@ namespace LicensingWithStripe.License
 {
     public partial class LicenseInfoForm : DevExpress.XtraEditors.XtraForm, ILicenseInfoView
     {
-        public event Action Activate;
+        public event EventHandler<EventArgs> ActivateLicense;
 
         private ILicense _license;
         public ILicense License 
@@ -23,22 +23,22 @@ namespace LicensingWithStripe.License
             InitializeComponent();
         }
 
-        public void DisplayLicenseInfo()
+        private void DisplayLicenseInfo()
         {
             if(_license == null)
             {
-                memoEdit1.Text = "No license";
+                uxLicenseInfo.Text = "No license";
             }
             else
             {
-                memoEdit1.Text = _license.ToFormatString();
+                uxLicenseInfo.Text = _license.ToFormatString();
             }
 
         }
 
-        private void activateButton_Click(object sender, EventArgs e)
+        private void uxActivate_Click(object sender, EventArgs e)
         {
-            Activate?.Invoke();
+            ActivateLicense?.Invoke(this, EventArgs.Empty);
         }
     }
 }
